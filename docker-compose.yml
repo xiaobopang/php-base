@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  base-api:
+    container_name: base-api
+    build:
+      context: "."
+    volumes:
+      - ./src:/var/www:rw
+    ports:
+      - "9501:9501"
+      - "9502:9502"
+    restart: always
+    tty: true
+    privileged: true
+    networks:
+      - app-network
+networks:
+  app-network:
+    driver: bridge
