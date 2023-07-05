@@ -13,9 +13,10 @@ namespace App\Controller;
 
 use Hyperf\Di\Annotation\Inject;
 use Hyperf\HttpServer\Contract\RequestInterface;
-use Hyperf\HttpServer\Contract\ResponseInterface;
 use Psr\Container\ContainerInterface;
 use App\Component\Response;
+use Hyperf\Redis\Redis;
+use Hyperf\Validation\Contract\ValidatorFactoryInterface;
 
 
 abstract class AbstractController
@@ -28,4 +29,10 @@ abstract class AbstractController
 
     #[Inject]
     protected Response $response;
+
+    #[Inject]
+    protected ValidatorFactoryInterface $validationFactory;
+
+    #[Inject]
+    protected Redis $redis;
 }
