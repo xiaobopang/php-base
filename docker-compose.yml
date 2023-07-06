@@ -12,8 +12,5 @@ services:
     restart: always
     tty: true
     privileged: true
-    networks:
-      - app-network
-networks:
-  app-network:
-    driver: bridge
+    extra_hosts:
+      - host.docker.internal:host-gateway
