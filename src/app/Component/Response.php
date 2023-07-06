@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types = 1);
+declare (strict_types=1);
 
 namespace App\Component;
 
@@ -40,10 +40,10 @@ class Response extends HyperfResponse
     public function success($data = null, int $code = 200, string $msg = 'success'): PsrResponseInterface
     {
         $data = [
-            'code'      => $code,
-            'msg'       => $msg,
+            'code' => $code,
+            'msg' => $msg,
             'timestamp' => time(),
-            'data'      => $data,
+            'data' => $data,
         ];
 
         return $this->json($data);
@@ -55,20 +55,21 @@ class Response extends HyperfResponse
     public function error(int $code = 10400, string $msg = 'failed', $data = null)
     {
         $data = [
-            'code'      => $code,
-            'msg'       => $msg,
+            'code' => $code,
+            'msg' => $msg,
             'timestamp' => time(),
-            'data'      => $data,
+            'data' => $data,
         ];
 
         return $this->json($data);
     }
+
     /**
      * @param array|\Hyperf\Utils\Contracts\Arrayable|\Hyperf\Utils\Contracts\Jsonable $result
      *
-     * @param int                                                                      $statusCode
+     * @param int $statusCode
      *
-     * @param int                                                                      $options
+     * @param int $options
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
@@ -83,7 +84,7 @@ class Response extends HyperfResponse
 
     /**
      * @param array|\Hyperf\Utils\Contracts\Arrayable|\Hyperf\Utils\Contracts\Jsonable $data
-     * @param int                                                                      $options
+     * @param int $options
      *
      * @return string
      */
@@ -100,7 +101,7 @@ class Response extends HyperfResponse
 
     /**
      * @param string $xml
-     * @param int    $statusCode
+     * @param int $statusCode
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
@@ -114,7 +115,7 @@ class Response extends HyperfResponse
 
     /**
      * @param string $text plain
-     * @param int    $statusCode
+     * @param int $statusCode
      *
      * @return \Psr\Http\Message\ResponseInterface
      */

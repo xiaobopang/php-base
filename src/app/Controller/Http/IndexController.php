@@ -13,6 +13,8 @@ declare(strict_types=1);
 namespace App\Controller\Http;
 
 
+use App\Model\User;
+
 class IndexController extends BaseController
 {
 
@@ -20,14 +22,17 @@ class IndexController extends BaseController
     {
         $params = $this->request->all() ?: [];
         $rules = [
-            'user' => 'sometimes|string|max:5',
+            'nickname' => 'sometimes|string|max:5',
         ];
         $messages = [
-            'user.string' => 'user类型是字符串',
-            'user.max' => '长度不能大于5',
+            'nickname.string' => 'user类型是字符串',
         ];
         $this->validated($params, $rules, $messages);
 
-        return $this->response->success(['id' => snowFlake()]);
+        $result = snowFlake();
+        if (!empty($params['nickname'])) {
+            $result = User::query()->where('nickname', 'like', '%' . $params['keyword'] . '%')->first();
+        }
+        return $this->response->success($result);
     }
 }
