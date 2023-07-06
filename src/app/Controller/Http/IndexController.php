@@ -31,7 +31,7 @@ class IndexController extends BaseController
 
         $result = snowFlake();
         if (!empty($params['nickname'])) {
-            $result = User::query()->where('nickname', 'like', '%' . $params['keyword'] . '%')->first();
+            $result = User::query()->where('nickname', 'like', '%' . $params['nickname'] . '%')->first();
         }
         return $this->response->success($result);
     }
