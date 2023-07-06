@@ -20,14 +20,14 @@ class IndexController extends BaseController
     {
         $params = $this->request->all() ?: [];
         $rules = [
-            'user' => 'required|string|max:5',
+            'user' => 'sometimes|string|max:5',
         ];
         $messages = [
-            'user.required' => 'user必传参数不能为空',
+            'user.string' => 'user类型是字符串',
             'user.max' => '长度不能大于5',
         ];
         $this->validated($params, $rules, $messages);
 
-        return $this->response->success(['hello']);
+        return $this->response->success(['id' => snowFlake()]);
     }
 }
