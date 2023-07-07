@@ -31,11 +31,7 @@ class IndexController extends BaseController
 
         $result = snowFlake();
         if (!empty($params['nickname'])) {
-
-            var_dump(1111111);
             $result = User::query()->where('id', 2)->first();
-            var_dump(22222);
-            var_dump($result);
         }
         return $this->response->success($result);
     }

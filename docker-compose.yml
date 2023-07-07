@@ -13,4 +13,4 @@ services:
     tty: true
     privileged: true
     extra_hosts:
-      - host.docker.internal:host-gateway
+      - "host.docker.internal:host-gateway"
