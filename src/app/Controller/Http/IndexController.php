@@ -22,10 +22,11 @@ class IndexController extends BaseController
     {
         $params = $this->request->all() ?: [];
         $rules = [
-            'nickname' => 'sometimes|string|max:5',
+            'nickname' => 'sometimes|string|max:8',
         ];
         $messages = [
-            'nickname.string' => 'user类型是字符串',
+		'nickname.string' => 'nickname类型是字符串',
+		'nickname.max'    => 'nickname长度不能超过8',
         ];
         $this->validated($params, $rules, $messages);
 
