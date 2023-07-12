@@ -33,7 +33,8 @@
         "hyperf/redis": "~3.0.0",
         "hyperf/snowflake": "^3.0",
         "hyperf/tracer": "~3.0.0",
-        "hyperf/validation": "^3.0"
+        "hyperf/validation": "^3.0",
+        "hyperf/websocket-server": "^3.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.0",

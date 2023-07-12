@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f842671e558b07f18c0598f26f196b50",
+    "content-hash": "4930268ae4853492644075ed991c2ac7",
     "packages": [
         {
             "name": "doctrine/deprecations",
@@ -4040,6 +4040,71 @@
                 "source": "https://github.com/hyperf/validation/tree/v3.0.24"
             },
             "time": "2023-06-08T01:34:45+00:00"
+        },
+        {
+            "name": "hyperf/websocket-server",
+            "version": "v3.0.18",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hyperf/websocket-server.git",
+                "reference": "5d8bd4d3ac08e5fe299a7c08e55f1e05a2ff148c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hyperf/websocket-server/zipball/5d8bd4d3ac08e5fe299a7c08e55f1e05a2ff148c",
+                "reference": "5d8bd4d3ac08e5fe299a7c08e55f1e05a2ff148c",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "hyperf/collection": "~3.0.0",
+                "hyperf/contract": "~3.0.0",
+                "hyperf/exception-handler": "~3.0.0",
+                "hyperf/http-server": "~3.0.0",
+                "hyperf/support": "~3.0.0",
+                "hyperf/utils": "~3.0.0",
+                "php": ">=8.0",
+                "psr/container": "^1.0|^2.0",
+                "psr/event-dispatcher": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                },
+                "hyperf": {
+                    "config": "Hyperf\\WebSocketServer\\ConfigProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hyperf\\WebSocketServer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A websocket server library for Hyperf.",
+            "homepage": "https://hyperf.io",
+            "keywords": [
+                "hyperf",
+                "php",
+                "swoole",
+                "websocket"
+            ],
+            "support": {
+                "docs": "https://hyperf.wiki",
+                "issues": "https://github.com/hyperf/hyperf/issues",
+                "pull-request": "https://github.com/hyperf/hyperf/pulls",
+                "source": "https://github.com/hyperf/hyperf"
+            },
+            "time": "2023-04-26T03:02:31+00:00"
         },
         {
             "name": "jcchavezs/zipkin-opentracing",
