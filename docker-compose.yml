@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   base-api:
-    container_name: base-api
+    container_name: api
     build:
       context: "."
     volumes:
