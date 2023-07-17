@@ -14,8 +14,8 @@ namespace App\Controller\Http;
 
 use App\Constants\Constant;
 use App\Controller\AbstractController;
-use App\Exception\ValidateException;
-
+//use App\Exception\ValidateException;
+use \Hyperf\Validation\ValidationException;
 class BaseController extends AbstractController
 {
 
@@ -25,7 +25,7 @@ class BaseController extends AbstractController
         $validator = $this->validationFactory->make($params, $rules, $message);
         if ($validator->fails()) {
             //$errorMessage = $validator->errors()->first();  $validator->messages()->first()
-            throw new ValidateException(400, $validator->errors()->first());
+            throw new ValidationException($validator);
         }
     }
 }

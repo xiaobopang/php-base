@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace App\Exception\Handler;
 
+use App\Exception\ApiException;
 use App\Exception\BusinessException;
 use App\Exception\ValidateException;
 use Hyperf\Contract\StdoutLoggerInterface;
@@ -32,30 +33,19 @@ class AppExceptionHandler extends ExceptionHandler
 
     public function handle(Throwable $throwable, ResponseInterface $response)
     {
+
+        $this->stopPropagation();
+
         // $this->logger->error($throwable->getTraceAsString());
+        $this->logger->error(sprintf('业务：%s[%s] in %s', $throwable->getMessage(), $throwable->getLine(), $throwable->getFile()));
+        // 阻止异常冒泡
+        //自定义异常处理
+        return $this->httpResponse->json(['msg' => $throwable->getMessage(), 'code' => $throwable->getCode(), 'data' => null, 'timestamp' => time()])->withStatus(400);
 
-        // 判断被捕获到的异常是希望被捕获的异常
-        if ($throwable instanceof ValidateException) {
-            $this->logger->error(sprintf('参数校验：%s[%s] in %s', $throwable->getMessage(), $throwable->getLine(), $throwable->getFile()));
-            // 阻止异常冒泡
-            $this->stopPropagation();
-            //自定义异常处理
-            return $this->httpResponse->json(['msg' => $throwable->getMessage(), 'code' => $throwable->getCode(), 'data' => null, 'timestamp' => time()])->withStatus(400);
-        }
-
-        if ($throwable instanceof BusinessException) {
-            $this->logger->error(sprintf('业务：%s[%s] in %s', $throwable->getMessage(), $throwable->getLine(), $throwable->getFile()));
-            // 阻止异常冒泡
-            $this->stopPropagation();
-            //自定义异常处理
-            return $this->httpResponse->json(['msg' => $throwable->getMessage(), 'code' => $throwable->getCode(), 'data' => null, 'timestamp' => time()])->withStatus(400);
-        }
-
-        return $response;
     }
 
     public function isValid(Throwable $throwable): bool
     {
-        return true;
+        return $throwable instanceof BusinessException;
     }
 }
