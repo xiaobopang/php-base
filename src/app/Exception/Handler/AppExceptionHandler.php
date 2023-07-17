@@ -37,10 +37,15 @@ class AppExceptionHandler extends ExceptionHandler
         $this->stopPropagation();
 
         // $this->logger->error($throwable->getTraceAsString());
-        $this->logger->error(sprintf('业务：%s[%s] in %s', $throwable->getMessage(), $throwable->getLine(), $throwable->getFile()));
+        $this->logger->info(sprintf('业务：%s[%s] in %s', $throwable->getMessage(), $throwable->getLine(), $throwable->getFile()));
         // 阻止异常冒泡
         //自定义异常处理
-        return $this->httpResponse->json(['msg' => $throwable->getMessage(), 'code' => $throwable->getCode(), 'data' => null, 'timestamp' => time()])->withStatus(400);
+        return $this->httpResponse->json([
+            'msg' => $throwable->getMessage(),
+            'code' => $throwable->getCode(),
+            'data' => null,
+            'timestamp' => time()
+        ])->withStatus(200);
 
     }
 
