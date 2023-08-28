@@ -3,7 +3,7 @@ services:
   base-api:
     container_name: api
     build:
-      context: "."
+      context: ".."
     volumes:
       - ./src:/var/www:rw
     ports:

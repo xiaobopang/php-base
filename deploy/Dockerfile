@@ -36,8 +36,8 @@ RUN set -ex \
     && echo -e "\033[42;37m Build Completed :).\033[0m\n"
 
 
-COPY ./supervisor /etc/supervisor
-COPY ./src /var/www
+COPY supervisor /etc/supervisor
+COPY ../src /var/www
 WORKDIR /var/www
 RUN composer install --no-dev -o
 
